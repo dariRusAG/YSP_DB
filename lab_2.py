@@ -2,8 +2,6 @@ import sqlite3
 
 con = sqlite3.connect("YSP.sqlite")
 
-# Пипец
-
 con.executescript('''
 CREATE TABLE IF NOT EXISTS category (
  category_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -210,5 +208,3 @@ cursor = con.cursor()
 # print(cursor.fetchall())
 
 con.close()
-
-#проверка
