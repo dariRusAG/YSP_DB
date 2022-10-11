@@ -2,7 +2,6 @@ import sqlite3
 
 con = sqlite3.connect("YSP.sqlite")
 
-
 con.executescript('''
 CREATE TABLE IF NOT EXISTS category (
  category_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -79,7 +78,6 @@ CREATE TABLE IF NOT EXISTS favorite (
  FOREIGN KEY (pattern_id) REFERENCES pattern (pattern_id) ON DELETE CASCADE
 );
 ''')
-
 
 con.executescript('''
 INSERT INTO category (category_name)
@@ -192,13 +190,22 @@ VALUES
 (7,23),
 (7,1),
 (7,4);
+
+INSERT INTO measure (measure_name)
+VALUES
+();
+
+INSERT INTO math_formula (formula, description)
+VALUES
+();
+
 ''')
 
 # сохраняем информацию в базе данных
 con.commit()
 cursor = con.cursor()
 
-cursor.execute("SELECT * FROM pattern;")
-print(cursor.fetchall())
+# cursor.execute("SELECT * FROM pattern")
+# print(cursor.fetchall())
 
 con.close()
