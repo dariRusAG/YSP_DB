@@ -342,15 +342,11 @@ print(cursor.fetchall())
 print()
 
 cursor.execute('''
-SELECT a.studentid, a.name, b.total_marks
-FROM student a, marks b
-WHERE a.studentid = b.studentid AND b.total_marks >
-(SELECT pattern_id
+SELECT users_id
 FROM favorite
-WHERE MAX(pattern_id) 
 GROUP BY users_id
-ORDER BY 
-);
+ORDER BY COUNT(pattern_id) DESC LIMIT 1
+
 ''')
 print(cursor.fetchall())
 print()
