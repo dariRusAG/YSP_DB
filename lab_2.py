@@ -2,6 +2,8 @@ import sqlite3
 
 con = sqlite3.connect("YSP.sqlite")
 
+# Пипец
+
 con.executescript('''
 CREATE TABLE IF NOT EXISTS category (
  category_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -143,7 +145,6 @@ VALUES
 ('Платье-трапеция', 8),
 ('Платье-рубашка', 8),
 ('Платье-баллон', 8);
-
 
 
 INSERT INTO favorite (users_id, pattern_id)
