@@ -210,3 +210,5 @@ cursor = con.cursor()
 # print(cursor.fetchall())
 
 con.close()
+
+#проверка
