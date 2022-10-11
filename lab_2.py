@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS category (
  category_name VARCHAR(30)
 );
 
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS users (
  user_id INTEGER PRIMARY KEY AUTOINCREMENT,
  user_login VARCHAR(30),
  user_password VARCHAR(30),
@@ -189,13 +189,22 @@ VALUES
 (7,23),
 (7,1),
 (7,4);
+
+INSERT INTO measure (measure_name)
+VALUES
+();
+
+INSERT INTO math_formula (formula, description)
+VALUES
+();
+
 ''')
 
 # сохраняем информацию в базе данных
 con.commit()
 cursor = con.cursor()
 
-cursor.execute("SELECT * FROM pattern")
-print(cursor.fetchall())
+# cursor.execute("SELECT * FROM pattern")
+# print(cursor.fetchall())
 
 con.close()
