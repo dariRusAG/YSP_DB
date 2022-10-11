@@ -9,9 +9,9 @@ CREATE TABLE IF NOT EXISTS category (
 );
 
 CREATE TABLE IF NOT EXISTS users (
- user_id INTEGER PRIMARY KEY AUTOINCREMENT,
- user_login VARCHAR(30),
- user_password VARCHAR(30),
+ users_id INTEGER PRIMARY KEY AUTOINCREMENT,
+ users_login VARCHAR(30),
+ users_password VARCHAR(30),
  OG REAL,
  OT REAL,
  OB REAl,
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS favorite (
  favorite_id INTEGER PRIMARY KEY AUTOINCREMENT,
  user_id INTEGER,
  pattern_id INTEGER,
- FOREIGN KEY (user_id) REFERENCES user (user_id) ON DELETE CASCADE,
+ FOREIGN KEY (users_id) REFERENCES users (users_id) ON DELETE CASCADE,
  FOREIGN KEY (pattern_id) REFERENCES pattern (pattern_id) ON DELETE CASCADE
 );
 ''')
@@ -103,7 +103,7 @@ VALUES
 
 
 
-INSERT INTO user (user_login, user_password, OG, OT, OB, VB, CG, VG, SHG1, SHG2, H, SHS, OSH, DPL, OP, OZ, DR)
+INSERT INTO users (users_login, users_password, OG, OT, OB, VB, CG, VG, SHG1, SHG2, H, SHS, OSH, DPL, OP, OZ, DR)
 VALUES
 ('NiShiGara','123456789qwerty',104, 84, 110, 21, 22, 31, 44, 34, 11, 38, 40, 12, 32, 17, 62),
 ('srf_adlr','qwertasdfzxc',80, 60, 86, 18, 19, 25, 32, 28, 8, 32,  34, 11, 26, 14, 60),
@@ -145,7 +145,7 @@ VALUES
 ('Платье-баллон', 8);
 
 
-INSERT INTO favorite (user_id, pattern_id)
+INSERT INTO favorite (users_id, pattern_id)
 VALUES
 (1,5),
 (1,15),
