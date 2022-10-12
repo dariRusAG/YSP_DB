@@ -291,6 +291,8 @@ cursor = con.cursor()
 #                              ЗАДАНИЕ                                     #
 ############################################################################
 
+# 1. Запросы на выборку для связанных таблиц с условиями и сортировкой
+
 # Вывести все избранные юбки пользователей. Сортировка сначала по логину, потом по названию изделия
 cursor.execute('''
  SELECT
@@ -318,6 +320,8 @@ ORDER BY pattern_name
 print(cursor.fetchall())
 print()
 
+# 2. Запросы с группировкой и групповыми функциями
+
 # вывести количество деталей у всех выкроек, сортировка по убыванию количества деталей
 cursor.execute('''
 SELECT pattern_name, COUNT(detail_id) as amount
@@ -341,6 +345,8 @@ ORDER BY max DESC, users_login
 print(cursor.fetchall())
 print()
 
+# 3. Запросы со вложенными запросами или табличными выражениями
+
 cursor.execute('''
 SELECT users_id
 FROM favorite
@@ -350,6 +356,9 @@ ORDER BY COUNT(pattern_id) DESC LIMIT 1
 ''')
 print(cursor.fetchall())
 print()
+
+# 4. Запросы корректировки данных (обновление, добавление, удаление и пр.)
+
 
 # cursor.execute("SELECT * FROM pattern")
 # print(cursor.fetchall())
