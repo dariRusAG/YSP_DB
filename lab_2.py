@@ -141,7 +141,6 @@ VALUES
 ('Платье-рубашка', 8),
 ('Платье-баллон', 8);
 
-
 INSERT INTO favorite (users_id, pattern_id)
 VALUES
 (1,5),
@@ -275,6 +274,12 @@ VALUES
 (9, 12),
 (9, 13),
 (9, 9);
+
+INSERT INTO math_formula (formula, description)
+VALUES
+('ax2 + bx + c', 'Основа-парабола'),
+('kx + b', 'Основа-прямая');
+
 ''')
 
 # сохраняем информацию в базе данных
