@@ -347,12 +347,32 @@ print()
 
 # 3. Запросы со вложенными запросами или табличными выражениями
 
+# выводит выкройки пользователя с максимальным количеством выкроек в избранном, сортировка по названию выкройки
 cursor.execute('''
-SELECT users_id
+SELECT users_login, pattern_name
+FROM favorite
+ LEFT JOIN pattern USING (pattern_id)
+ LEFT JOIN users USING (users_id)
+WHERE users_id =
+(SELECT users_id
 FROM favorite
 GROUP BY users_id
-ORDER BY COUNT(pattern_id) DESC LIMIT 1
+ORDER BY COUNT(pattern_id) DESC LIMIT 1)
+ORDER BY pattern_name
+''')
+print(cursor.fetchall())
+print()
 
+# выводит название самой популярной выкройки (популярной - это той, которую чаще всего добавляли в избранное)
+cursor.execute('''
+SELECT pattern_name
+FROM pattern
+WHERE pattern_id =
+(SELECT pattern_id
+FROM favorite
+GROUP BY pattern_id
+ORDER BY COUNT(users_id) DESC LIMIT 1)
+ORDER BY pattern_name
 ''')
 print(cursor.fetchall())
 print()
