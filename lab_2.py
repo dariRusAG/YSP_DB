@@ -377,30 +377,35 @@ print()
 
 # 4. Запросы корректировки данных (обновление, добавление, удаление и пр.)
 
-# Добавляет в избранное случайного пользователя выкройку - "Классическая рубашка"
-# cursor.execute(f'''
-# INSERT INTO favorite (users_id, pattern_id)
-# VALUES (
-# (SELECT users_id
-#  FROM users
-#  ORDER BY RANDOM() LIMIT 1),
-#     (SELECT pattern_id
-#      FROM pattern
-#      WHERE pattern_id == :p_pattern)
-# )
-# ''', {"p_pattern": 8})
+# # Добавляет в избранное случайного пользователя выкройку - "Классическая рубашка"
+cursor.execute(f'''
+INSERT INTO favorite (users_id, pattern_id)
+VALUES (
+(SELECT users_id
+ FROM users
+ ORDER BY RANDOM() LIMIT 1),
+    (SELECT pattern_id
+     FROM pattern
+     WHERE pattern_id == :p_pattern)
+)
+''', {"p_pattern": 8})
 
+print(cursor.fetchall())
+print()
 
-# Обновляет названия выкроек (добавляет приписку "Жен"), если их категория соответствует юбке или платью
-# cursor.execute('''
-#  UPDATE pattern
-#  SET pattern_name = pattern_name || ' (Жен)'
-#    WHERE category_id IN
-#    (SELECT category_id
-#    FROM category
-#    WHERE category_name LIKE 'Платье'
-#    OR category_name LIKE 'Юбка')
-# ''')
-#
-# con.commit()
+# # Обновляет названия выкроек (добавляет приписку "Жен"), если их категория соответствует юбке или платью
+cursor.execute('''
+ UPDATE pattern
+ SET pattern_name = pattern_name || ' (Жен)'
+   WHERE category_id IN
+   (SELECT category_id
+   FROM category
+   WHERE category_name LIKE 'Платье'
+   OR category_name LIKE 'Юбка')
+''')
+
+print(cursor.fetchall())
+print()
+
+con.commit()
 con.close()
