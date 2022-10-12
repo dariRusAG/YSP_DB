@@ -333,7 +333,6 @@ ORDER BY
 print(cursor.fetchall())
 print()
 
-
 # cursor.execute("SELECT * FROM pattern")
 # print(cursor.fetchall())
 
